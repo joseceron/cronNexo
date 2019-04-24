@@ -20,7 +20,7 @@ var myJob = new Scheduled({
  
 var jobSercorisac = new Scheduled({
     id: "minuteTaskEven",
-    pattern: "*/60 8-19 * * MON-FRI", // Tarea a ejecutar cada dos minutos
+    pattern: "*/60 8-19 * * 1-5", // Tarea a ejecutar cada dos minutos
     task: function(){
         console.log("Job Sercorisacn en integrado");
         cleanSercorisac.iniciar()
