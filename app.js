@@ -7,7 +7,7 @@ var chalk = require('chalk')
 
 var myJob = new Scheduled({
     id: "minuteTaskEven",
-    pattern: "*/10 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
+    pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
     task: function(){
         console.log("Job Lavisa distribuidora");
         pedidoLavisa.ajustarPedidos()
