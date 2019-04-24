@@ -3,23 +3,25 @@ var querySQL = require('./query.js')
 var chalk = require('chalk')
 
 
-var connection = mysql.createConnection({
-    host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
-    user: 'seratic',
-    password: 'cl4v3d353r4t1c',
-    database: 'suite_1142_104'
 
-});
-
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log(chalk.blue.inverse("Conectado a la bd integrador!"));
-});
 
 
 // let query= 'SELECT id FROM `visita` v WHERE `fechaInicio` > "2019-04-16" AND sucursal = 4'
 // connection.query(query, function (error, results, fields) {
 const iniciar = () => {
+    var connection = mysql.createConnection({
+        host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
+        user: 'seratic',
+        password: 'cl4v3d353r4t1c',
+        database: 'suite_1142_104'
+    
+    });
+    
+    connection.connect(function (err) {
+        if (err) throw err;
+        console.log(chalk.blue.inverse("Conectado a la bd integrador!"));
+    });
+
     //Obtener relevos sin detalle pedido
     connection.query(querySQL.getIdRelevos(), function (error, results, fields) {
         if (error) throw error;

@@ -4,25 +4,31 @@ var mensajeTexto = require('./mensajeTexto.js')
 var querySQL = require('./query.js')
 var chalk = require('chalk')
 
-var connection = mysql.createConnection({
-    host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
-    user: 'seratic',
-    password: 'cl4v3d353r4t1c',
-    database: 'suite_1192_134'
 
-});
 
 let numeros = [
     { "movil": "942408419" },
     { "movil": "937665960" },
 ]
 
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log(chalk.blue.inverse("Conectado a la bd Lavisa!"));
-});
+
 
 const ajustarPedidos = (idRelevo) => {
+
+    var connection = mysql.createConnection({
+        host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
+        user: 'seratic',
+        password: 'cl4v3d353r4t1c',
+        database: 'suite_1192_134'
+    
+    });
+
+
+    connection.connect(function (err) {
+        if (err) throw err;
+        console.log(chalk.blue.inverse("Conectado a la bd Lavisa!"));
+    });
+
     getPedidos.getPedidos('', (err, relevosSinDireccion, relevosSinFechaFin, relevosSinGpsFinal) => {
 
         if (err) { return console.log(chalk.red.inverse(err)) }

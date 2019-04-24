@@ -4,13 +4,10 @@ var Scheduled = require("scheduled");
 
 var chalk = require('chalk')
 
-let cronLavisa = "*/10 8-19 * * MON-FRI"
-let cronSercorisac = "*/60 8-19 * * MON-FRI"
 
- 
 var myJob = new Scheduled({
     id: "minuteTaskEven",
-    pattern: "*/10 9-16 * * 1-5", // Tarea a ejecutar cada dos minutos
+    pattern: "*/10 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
     task: function(){
         console.log("Job Lavisa distribuidora");
         pedidoLavisa.ajustarPedidos()
@@ -18,13 +15,13 @@ var myJob = new Scheduled({
 }).start();
 
  
-var jobSercorisac = new Scheduled({
-    id: "minuteTaskEven",
-    pattern: "*/60 8-19 * * 1-5", // Tarea a ejecutar cada dos minutos
-    task: function(){
-        console.log("Job Sercorisacn en integrado");
-        cleanSercorisac.iniciar()
-    }
-}).start();
+// var jobSercorisac = new Scheduled({
+//     id: "minuteTaskEven",
+//     pattern: "*/60 14-23 * * MON-FRY", // Tarea a ejecutar cada dos minutos
+//     task: function(){
+//         console.log("Job Sercorisacn en integrado");
+//         cleanSercorisac.iniciar()
+//     }
+// }).start();
 
 
