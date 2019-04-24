@@ -10,7 +10,7 @@ let cronSercorisac = "*/60 8-19 * * MON-FRI"
  
 var myJob = new Scheduled({
     id: "minuteTaskEven",
-    pattern: "*/10 8-16 * * 1-5", // Tarea a ejecutar cada dos minutos
+    pattern: "*/10 9-16 * * 1-5", // Tarea a ejecutar cada dos minutos
     task: function(){
         console.log("Job Lavisa distribuidora");
         pedidoLavisa.ajustarPedidos()
