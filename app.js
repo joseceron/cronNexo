@@ -1,8 +1,8 @@
 const express = require('express')
 const ngrok = require('ngrok');
 
-var cleanSercorisac = require('./utils/cleanSercorisac.js')
-var lavisaSQL = require('./utils/lavisaSQL.js')
+var cleanSercorisac = require('/utils/cleanSercorisac.js')
+var lavisaSQL = require('/utils/lavisaSQL.js')
 var Scheduled = require("scheduled");
 
 const app = express()
@@ -10,9 +10,6 @@ const port = process.env.PORT || 3000
 // server configuration
 // server.use(bodyParser.urlencoded({ extended: true }));
 // server.use(bodyParser.json());
-
-
-
 
 var chalk = require('chalk')
 
