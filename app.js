@@ -1,8 +1,8 @@
 const express = require('express')
 const ngrok = require('ngrok');
 
-var cleanSercorisac = require('/utils/cleanSercorisac.js')
-var lavisaSQL = require('/utils/lavisaSQL.js')
+var cleanSercorisac = require('./utils/cleanSercorisac.js')
+var lavisaSQL = require('./utils/lavisaSQL.js')
 var Scheduled = require("scheduled");
 
 const app = express()
