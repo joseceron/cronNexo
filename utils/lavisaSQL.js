@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var lavisaSW = require('./lavisaSW.js')
+var lavisaSW = require('./LavisaSW.js')
 var mensajeTexto = require('./mensajeTexto.js')
 var querySQL = require('./query.js')
 var chalk = require('chalk')
