@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var getPedidos = require('./getPedidosLavisa.js')
+var lavisaSW = require('./lavisaSW.js')
 var mensajeTexto = require('./mensajeTexto.js')
 var querySQL = require('./query.js')
 var chalk = require('chalk')
@@ -15,7 +15,7 @@ let numeros = [
 
 const ajustarPedidos = (idRelevo) => {
 
-    var connection = mysql.createConnection({
+    const connection = mysql.createConnection({
         host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
         user: 'seratic',
         password: 'cl4v3d353r4t1c',
@@ -29,12 +29,16 @@ const ajustarPedidos = (idRelevo) => {
         console.log(chalk.blue.inverse("Conectado a la bd Lavisa!"));
     });
 
-    getPedidos.getPedidos('', (err, relevosSinDireccion, relevosSinFechaFin, relevosSinGpsFinal) => {
+   lavisaSW.getPedidos('', (err, relevosSinDireccion, relevosSinFechaFin, relevosSinGpsFinal) => {
 
-        if (err) { return console.log(chalk.red.inverse(err)) }
-
+        if (err) { 
+            console.log(chalk.red.inverse(err)) 
+            console.log(chalk.blue.inverse("Cerrando cx Lavisa!"));           
+            return  connection.end();
+        }
 
         if (relevosSinDireccion.length > 0) {
+            
             console.log('relevos sin dirección: ' + relevosSinDireccion.length)
 
             numeros.forEach(numero => {
@@ -60,21 +64,24 @@ const ajustarPedidos = (idRelevo) => {
         if (relevosSinGpsFinal.length > 0) {
             console.log('relevos sin GPS Fin: ' + relevosSinGpsFinal.length)
             relevosSinGpsFinal.forEach(relevo => {
-                setGpsFinal(relevo.idVisita)
+                setGpsFinal(relevo.idVisita, connection)
+               
             });
         }
 
         if (relevosSinFechaFin.length > 0) {
             console.log('relevos sin fechaFin: ' + relevosSinFechaFin.length)
+            
         }
-        console.log(chalk.blue.inverse("Cerrando cx Lavisa!"));
         connection.end();
+        console.log(chalk.blue.inverse("Cerrando cx Lavisa!"));
+       
     })
 
 }
 
 
-const setGpsFinal = (idVisita) => {
+const setGpsFinal = (idVisita, connection) => {
 
     var sql = querySQL.updateGpsFin + idVisita
 
@@ -87,6 +94,7 @@ const setGpsFinal = (idVisita) => {
     });
 
 }
+
 
 
 module.exports = {

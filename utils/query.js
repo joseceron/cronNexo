@@ -23,6 +23,7 @@ var borrarRelevos = 'DELETE FROM `relevo`  WHERE id in ('
 var updateGpsFin = 'UPDATE `visita` SET posicionFin = posicionInicio WHERE id ='
 
 
+
 const getIdRelevos = () =>{
     return sql
 }

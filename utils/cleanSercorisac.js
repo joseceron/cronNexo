@@ -31,6 +31,7 @@ const iniciar = () => {
             var idsJSON = JSON.parse(JSON.stringify(results))
             var idsArray = []
             console.log('Ids a borrar: ', results.length)
+           
 
             idsJSON.forEach(row => {
                 idsArray.push(row.id)
@@ -40,12 +41,12 @@ const iniciar = () => {
 
                 if (err) { return console.log(chalk.red.inverse(err)) }
 
-                borrarDatosRelevo(sqlBorrarDatosRelevo, sqlBorrarRelevos)
+                borrarDatosRelevo(sqlBorrarDatosRelevo, sqlBorrarRelevos,connection)
             })
 
         }
         else {
-            console.log(chalk.yellow.inverse('No hay relevos sin detalle pedido para borrar'))
+            console.log(chalk.yellow.inverse('Sercorisac: No hay relevos sin detalle pedido para borrar'))
             console.log(chalk.blue.inverse("Cerrando cx integrador"));
             connection.end();
         }
@@ -53,19 +54,19 @@ const iniciar = () => {
     });
 }
 
-const borrarDatosRelevo = (sqlBorrarDatosRelevos, sqlBorrarRelevos) => {
+const borrarDatosRelevo = (sqlBorrarDatosRelevos, sqlBorrarRelevos, connection) => {
     console.log('Inicio borrar datos relevo')
 
     connection.query(sqlBorrarDatosRelevos, function (error, results, fields) {
         if (error) throw error
         var respJSON = JSON.stringify(results)
         console.log(chalk.green.inverse('Resultado de borrar datos relevos: ', respJSON))
-        borrarRelevos(sqlBorrarRelevos)
+        borrarRelevos(sqlBorrarRelevos,connection)
     });
 
 }
 
-const borrarRelevos = (sqlBorrarRelevos) => {
+const borrarRelevos = (sqlBorrarRelevos, connection) => {
     console.log('Inicio borrar relevos')
 
     connection.query(sqlBorrarRelevos, function (error, results, fields) {
