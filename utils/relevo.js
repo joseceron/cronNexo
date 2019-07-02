@@ -87,8 +87,9 @@ const getRelevo = (idVisita, idRelevo) => {
                                         }
                                         console.log('editó')
                                         console.log(chalk.green.inverse(JSON.stringify(results3)))
-
                                         console.log(results3.affectedRows)
+                                        console.log('cx cerrada')
+                                        connection.end();
                                         resolve(true)
 
                                     })
@@ -96,10 +97,12 @@ const getRelevo = (idVisita, idRelevo) => {
                                 }
                                 else{//if 
                                     console.log('Registro de visita no aplica para update')
+                                    console.log('cx cerrada')
+                                    connection.end();
                                     resolve(false)
                                 }
 
-                                console.log(visitaObject)
+                                
                               
                                
                             }
