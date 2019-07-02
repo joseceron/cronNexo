@@ -50,7 +50,7 @@ const getRelevo = (idVisita, idRelevo) => {
                 else {
                     idRelevo = relevoObject[0].id
                     idPedido = relevoObject[0].idPedido
-                    console.log('asignación')
+                    // console.log('asignación')
                     //    console.log(idPedido)
                     //    resolve(true)
 
@@ -101,7 +101,7 @@ const getRelevo = (idVisita, idRelevo) => {
                         });
                     }
                     else {
-                        console.log('no tiene la trama')
+                        console.log('Registro de visita no aplica para update')
                         connection.end();
                         resolve(false)
                     }

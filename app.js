@@ -32,17 +32,15 @@ app.get('/startcronsercorisac', (req, res) => {
 app.post('/pedido',(req,res) =>{
     
     let idRelevo = req.query.idRelevo;
-    let idVisita = req.query.idVisita;
-    console.log(chalk.green.inverse('1'))
-
+    let idVisita = req.query.idVisita;    
+        console.log(req.query)
     return mensaje(idVisita,idRelevo,res)
     
 })
 
 
 async function mensaje(idVisita, idRelevo,res){
-    me =  await relevo.getRelevo(idVisita, idRelevo)    
-    console.log(chalk.green.inverse('2' + me ))
+    me =  await relevo.getRelevo(idVisita, idRelevo)        
    return res.send({
        mensaje: me
    })
