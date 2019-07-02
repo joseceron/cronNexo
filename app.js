@@ -11,8 +11,8 @@ var bodyParser     =        require("body-parser");
 const app = express()
 const port = process.env.PORT || 3000
 // server configuration
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var chalk = require('chalk')
 
@@ -31,12 +31,15 @@ app.get('/startcronsercorisac', (req, res) => {
 
 app.post('/pedido',(req,res) =>{
     
-    let idRelevo = req.query.idRelevo;
-    let idVisita = req.query.idVisita;   
-    console.log(req) 
-        console.log('query: '+JSON.stringify(req.query))
-        console.log('body: ' +JSON.stringify(req.body))
-        console.log('req: '+JSON.stringify(req))
+    // let idRelevo = req.query.idRelevo;
+    // let idVisita = req.query.idVisita;   
+    // console.log(req.query) 
+    let idRelevo = req.body.idRelevo;
+    let idVisita = req.body.idVisita;   
+    console.log(req.query)
+    console.log(req.body) 
+        
+    // console.log(req)
     return mensaje(idVisita,idRelevo,res)
     
 })
@@ -86,15 +89,15 @@ app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
-ngrok.connect({
-    proto: 'http',
-    addr: 3000
-}, (err, url) => {
-    if (err) {
-        console.error('Error while connecting Ngrok', err);
-        return new Error('Ngrok Failed');
-    } else {
-        console.log('Tunnel Created -> ', url);
+// ngrok.connect({
+//     proto: 'http',
+//     addr: 3000
+// }, (err, url) => {
+//     if (err) {
+//         console.error('Error while connecting Ngrok', err);
+//         return new Error('Ngrok Failed');
+//     } else {
+//         console.log('Tunnel Created -> ', url);
 
-    }
-});
+//     }
+// });
