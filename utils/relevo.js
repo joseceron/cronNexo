@@ -83,7 +83,9 @@ const getRelevo = (idVisita, idRelevo) => {
                                             console.log('Error 3:'+ er3)
                                             resolve(false)
                                         }
+                                        console.log('editó')
                                         console.log(chalk.green.inverse(JSON.parse(JSON.stringify(results3))))
+                                        
                                         console.log(results3.affectedRows)
                                         resolve(true)
 
