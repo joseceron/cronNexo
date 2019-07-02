@@ -1,15 +1,18 @@
 const express = require('express')
 const ngrok = require('ngrok');
 
+const relevo = require('./utils/relevo.js')
+
 var cleanSercorisac = require('./utils/cleanSercorisac.js')
 var lavisaSQL = require('./utils/lavisaSQL.js')
 var Scheduled = require("scheduled");
+var bodyParser     =        require("body-parser");
 
 const app = express()
 const port = process.env.PORT || 3000
 // server configuration
-// server.use(bodyParser.urlencoded({ extended: true }));
-// server.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 var chalk = require('chalk')
 
@@ -20,26 +23,31 @@ app.get('', (req, res) => {
     })
 })
 
-app.get('/startcronlavisa', (req, res) => {
-    return res.send({
-        mensaje: 'index'
-    })
-})
-
-
 app.get('/startcronsercorisac', (req, res) => {
     return res.send({
         mensaje: 'index'
     })
 })
 
-app.post('/triggerpedido', (req, res) => {
-    console.log(req.query)
-    return res.send({
-        success: true
-    })
+app.post('/pedido',(req,res) =>{
+    
+    let idRelevo = req.query.idRelevo;
+    let idVisita = req.query.idVisita;
+    console.log(chalk.green.inverse('1'))
+
+    return mensaje(idVisita,idRelevo,res)
+    
 })
 
+
+async function mensaje(idVisita, idRelevo,res){
+    me =  await relevo.getRelevo(idVisita, idRelevo)    
+    console.log(chalk.green.inverse('2' + me ))
+   return res.send({
+       mensaje: me
+   })
+    
+}
 
 
 

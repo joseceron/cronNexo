@@ -9,8 +9,9 @@ var currentDateFinish = easydate('Y/M/d') + ' 23:59:59'
 // var currentDateFinish = '2019/04/15 23:59:59'
 
 
-const getPedidos = (input, callback) => {
+const getPedidos = (idRelevo, callback) => {
    
+  
 
     const url = 'http://34.224.125.60:8028/GestorVisitas/restApi/reportePedidoDetallado.action?codCuenta=1&codCampana=1&fechaInicio='
         + currentDateStart + '&fechaFin=' + currentDateFinish + '&idUsuarioInvoca=1000&codActividad=3&filtroSend=0&codsEstado=1,2,3,4,5,6,7'

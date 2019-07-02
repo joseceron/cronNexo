@@ -13,7 +13,7 @@ let numeros = [
 
 
 
-const ajustarPedidos = (idRelevo) => {
+const ajustarPedidos = (idRelevo = 0) => {
 
     const connection = mysql.createConnection({
         host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
@@ -29,7 +29,7 @@ const ajustarPedidos = (idRelevo) => {
         console.log(chalk.blue.inverse("Conectado a la bd Lavisa!"));
     });
 
-   lavisaSW.getPedidos('', (err, relevosSinDireccion, relevosSinFechaFin, relevosSinGpsFinal) => {
+   lavisaSW.getPedidos(idRelevo, (err, relevosSinDireccion, relevosSinFechaFin, relevosSinGpsFinal) => {
 
         if (err) { 
             console.log(chalk.red.inverse(err)) 

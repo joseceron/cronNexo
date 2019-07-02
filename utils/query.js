@@ -42,6 +42,24 @@ const deleteDatosRelevo = (ids, callback) => {
 
 }
 
+const getSQLRelevo = (idRelevo) => {
+
+var sqlRelevo = 
+'SELECT  r.id, r.codActividad, r.idPedido FROM `relevo` r '
++ ' WHERE r.id =' + idRelevo;
+
+return sqlRelevo;
+}
+
+
+
+const updateVisita = (idVisita) => {
+   
+    var sql = 'UPDATE `visita` v SET v.fechaFin = ADDTIME(v.fechaInicio, \'00:10:00.00\') '
+    
+    + 'WHERE v.id = '+ idVisita
+    return sql
+}
 
 
 module.exports = {
@@ -50,6 +68,8 @@ module.exports = {
     sql,
     updateGpsFin,
     borrarDatosRelevos,
-    borrarRelevos
+    borrarRelevos,   
+    getSQLRelevo,
+    updateVisita
    
 }
