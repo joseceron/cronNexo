@@ -45,6 +45,7 @@ const getRelevo = (idVisita, idRelevo) => {
 
                 if (relevoObject.length === 0) {
                     connection.end();
+                    console.log('no hay relevo para editar')
                     resolve(false)
                 }
                 else {
@@ -111,6 +112,7 @@ const getRelevo = (idVisita, idRelevo) => {
 
                 }
             } catch (error) {
+                console.log('error catch')
                 connection.end();
                 resolve(false)
             }
