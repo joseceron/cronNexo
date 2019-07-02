@@ -48,7 +48,7 @@ app.post('/pedido',(req,res) =>{
 async function mensaje(idVisita, idRelevo,res){
     me =  await relevo.getRelevo(idVisita, idRelevo)        
    return res.send({
-       mensaje: me
+    success: me
    })
     
 }
