@@ -32,10 +32,11 @@ app.get('/startcronsercorisac', (req, res) => {
 app.post('/pedido',(req,res) =>{
     
     let idRelevo = req.query.idRelevo;
-    let idVisita = req.query.idVisita;    
-        console.log('query: '+req.query)
-        console.log('body: ' +req.body)
-        console.log('req: '+req)
+    let idVisita = req.query.idVisita;   
+    console.log(req) 
+        console.log('query: '+JSON.stringify(req.query))
+        console.log('body: ' +JSON.stringify(req.body))
+        console.log('req: '+JSON.stringify(req))
     return mensaje(idVisita,idRelevo,res)
     
 })
