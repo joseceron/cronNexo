@@ -50,7 +50,7 @@ const getRelevo = (idVisita, idRelevo) => {
                 else {
                     idRelevo = relevoObject[0].id
                     idPedido = relevoObject[0].idPedido
-                    // console.log('asignación')
+                    console.log('asignación')
                     //    console.log(idPedido)
                     //    resolve(true)
 
@@ -79,7 +79,7 @@ const getRelevo = (idVisita, idRelevo) => {
 
                                     connection.query(sqlUpdateVisita, (er3, results3, fields3) => {
                                         if (er3){
-                                            console.log('Erro 3:'+ er3)
+                                            console.log('Error 3:'+ er3)
                                             resolve(false)
                                         }
                                         console.log(chalk.green.inverse(JSON.parse(JSON.stringify(results3))))
@@ -90,6 +90,7 @@ const getRelevo = (idVisita, idRelevo) => {
                                    
                                 }
                                 else{//if 
+                                    console.log('Registro de visita no aplica para update')
                                     resolve(false)
                                 }
 
@@ -101,7 +102,7 @@ const getRelevo = (idVisita, idRelevo) => {
                         });
                     }
                     else {
-                        console.log('Registro de visita no aplica para update')
+                        console.log('Registro de relevo no aplica para update')
                         connection.end();
                         resolve(false)
                     }
