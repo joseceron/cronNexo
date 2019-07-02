@@ -63,6 +63,8 @@ const getRelevo = (idVisita, idRelevo) => {
                         var sqlGetVisita = querySQL.getVisita(idVisita)
                         var sqlUpdateVisita = querySQL.updateVisita(idVisita)
 
+                        console.log(sqlUpdateVisita)
+
                         connection.query(sqlGetVisita, function (error, results2, fields) {
 
                             if (error) {
