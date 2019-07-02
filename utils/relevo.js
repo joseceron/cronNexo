@@ -84,8 +84,8 @@ const getRelevo = (idVisita, idRelevo) => {
                                             resolve(false)
                                         }
                                         console.log('editó')
-                                        console.log(chalk.green.inverse(JSON.parse(JSON.stringify(results3))))
-                                        
+                                        console.log(chalk.green.inverse(results3))
+
                                         console.log(results3.affectedRows)
                                         resolve(true)
 
