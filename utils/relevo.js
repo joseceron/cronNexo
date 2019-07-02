@@ -12,8 +12,8 @@ const getRelevo = (idVisita, idRelevo) => {
         host: 'seraticsuite.cjmcnfeqjnfn.us-east-1.rds.amazonaws.com',
         user: 'seratic',
         password: 'cl4v3d353r4t1c',
-        // database: 'suite_1192_134'
-        database: 'lavisa'
+        database: 'suite_1192_134'
+        // database: 'lavisa'
 
     });
 
