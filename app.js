@@ -85,15 +85,15 @@ app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
-ngrok.connect({
-    proto: 'http',
-    addr: 3000
-}, (err, url) => {
-    if (err) {
-        console.error('Error while connecting Ngrok', err);
-        return new Error('Ngrok Failed');
-    } else {
-        console.log('Tunnel Created -> ', url);
+// ngrok.connect({
+//     proto: 'http',
+//     addr: 3000
+// }, (err, url) => {
+//     if (err) {
+//         console.error('Error while connecting Ngrok', err);
+//         return new Error('Ngrok Failed');
+//     } else {
+//         console.log('Tunnel Created -> ', url);
 
-    }
-});
+//     }
+// });

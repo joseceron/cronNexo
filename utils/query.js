@@ -55,9 +55,16 @@ return sqlRelevo;
 
 const updateVisita = (idVisita) => {
    
-    var sql = 'UPDATE `visita` v SET v.fechaFin = ADDTIME(v.fechaInicio, \'00:10:00.00\') '
+    var sql = 'UPDATE `visita` v SET v.fechaFin = ADDTIME(v.fechaInicio, \'00:10:00.00\'), v.posicionFin=v.posicionInicio '
     
-    + 'WHERE v.id = '+ idVisita
+    + 'WHERE v.id = '+ idVisita 
+    return sql
+}
+
+const getVisita = (idVisita) => {
+    var sql = 'SELECT v.fechaFin, v.posicionInicio, v.posicionFin FROM `visita` v '
+    + ' WHERE v.id=' + idVisita
+
     return sql
 }
 
@@ -70,6 +77,7 @@ module.exports = {
     borrarDatosRelevos,
     borrarRelevos,   
     getSQLRelevo,
-    updateVisita
+    updateVisita,
+    getVisita
    
 }
