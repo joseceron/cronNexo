@@ -33,7 +33,9 @@ app.post('/pedido',(req,res) =>{
     
     let idRelevo = req.query.idRelevo;
     let idVisita = req.query.idVisita;    
-        console.log(req.query)
+        console.log('query: '+req.query)
+        console.log('body: ' +req.body)
+        console.log('req: '+req)
     return mensaje(idVisita,idRelevo,res)
     
 })
