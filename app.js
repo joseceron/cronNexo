@@ -1,4 +1,4 @@
-// const express = require('express')
+const express = require('express')
 // const ngrok = require('ngrok');
 
 // const relevo = require('./utils/relevo.js')
@@ -79,18 +79,18 @@ app.get('', (req, res) => {
 
 
 // This metod needs to be last
-// app.get('*', (req, res) => {
-//     res.render('404', {
-//         title: '404',
-//         name: 'Seratic SAC',
-//         errorMessage: 'Page not found.'
-//     })
-// })
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Seratic SAC',
+        errorMessage: 'Page not found.'
+    })
+})
 
 
-// app.listen(port, () => {
-//     console.log('Server is up on port ' + port)
-// })
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
+})
 
 // ngrok.connect({
 //     proto: 'http',
