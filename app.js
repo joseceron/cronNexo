@@ -6,28 +6,38 @@
 var cleanSercorisac = require('./utils/cleanSercorisac.js')
 var lavisaSQL = require('./utils/lavisaSQL.js')
 var Scheduled = require("scheduled");
-// var bodyParser     =        require("body-parser");
+var bodyParser     =        require("body-parser");
 
-// const app = express()
-// const port = process.env.PORT || 3000
+const app = express()
+const port = process.env.PORT || 3000
 // // server configuration
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// var chalk = require('chalk')
+var chalk = require('chalk')
 
 
-// app.get('', (req, res) => {
-//     return res.send({
-//         mensaje: 'default'
-//     })
-// })
+app.get('', (req, res) => {
+    return res.send({
+        mensaje: 'default'
+    })
+})
 
-// app.get('/startcronsercorisac', (req, res) => {
-//     return res.send({
-//         mensaje: 'index'
-//     })
-// })
+app.get('/lavisacron', (req, res) => {
+    
+    var myJob = new Scheduled({
+        id: "Lavisa",
+        pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
+        task: function(){
+            console.log("Job Lavisa distribuidora");
+            lavisaSQL.ajustarPedidos()
+        }
+    }).start();
+    
+    return res.send({
+        mensaje: 'index'
+    })
+})
 
 // app.post('/pedido',(req,res) =>{
     
@@ -55,24 +65,17 @@ var Scheduled = require("scheduled");
 
 
 
-var myJob = new Scheduled({
-    id: "Lavisa",
-    pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
-    task: function(){
-        console.log("Job Lavisa distribuidora");
-        lavisaSQL.ajustarPedidos()
-    }
-}).start();
+
 
  
-var jobSercorisac = new Scheduled({
-    id: "Sercorisac",
-    pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
-    task: function(){
-        console.log("Job Sercorisacn en integrado");
-        cleanSercorisac.iniciar()
-    }
-}).start();
+// var jobSercorisac = new Scheduled({
+//     id: "Sercorisac",
+//     pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
+//     task: function(){
+//         console.log("Job Sercorisacn en integrado");
+//         cleanSercorisac.iniciar()
+//     }
+// }).start();
 
 
 // This metod needs to be last
