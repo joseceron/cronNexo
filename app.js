@@ -23,21 +23,21 @@ app.get('', (req, res) => {
     })
 })
 
-// app.get('/lavisacron', (req, res) => {
+app.get('/lavisacron', (req, res) => {
     
-//     var myJob = new Scheduled({
-//         id: "Lavisa",
-//         pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
-//         task: function(){
-//             console.log("Job Lavisa distribuidora");
-//             lavisaSQL.ajustarPedidos()
-//         }
-//     }).start();
+    var myJob = new Scheduled({
+        id: "Lavisa",
+        pattern: "*/1 14-23 * * 1-5", // Tarea a ejecutar cada dos minutos
+        task: function(){
+            console.log("Job Lavisa distribuidora");
+            lavisaSQL.ajustarPedidos()
+        }
+    }).start();
     
-//     return res.send({
-//         mensaje: 'index'
-//     })
-// })
+    return res.send({
+        mensaje: 'index'
+    })
+})
 
 // app.post('/pedido',(req,res) =>{
     
